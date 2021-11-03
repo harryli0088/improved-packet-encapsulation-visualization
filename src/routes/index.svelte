@@ -12,6 +12,7 @@
 
 <section>
 	<PacketEncapsulationViz />
+	<PacketEncapsulationViz vpn={true}/>
 </section>
 
 <style>
