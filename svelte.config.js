@@ -15,7 +15,7 @@ const config = {
       fallback: null
     }),
     paths: {
-      base: process.env.NODE_ENV==="production" ? '/your-repo-name' : undefined,
+      base: process.env.NODE_ENV==="production" ? '/improved-packet-encapsulation-visualization' : undefined,
     },
     // hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte'
