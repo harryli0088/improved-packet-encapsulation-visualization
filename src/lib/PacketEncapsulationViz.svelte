@@ -98,6 +98,28 @@
       <rect x={cellWidth + vpnOffsetX} y={0} width={cellWidth*3} height={cellHeight} fill={colorVPN}/>
       <rect x={vpnOffsetX} y={0} width={cellWidth*4} height={cellHeight} fill="transparent" {stroke} stroke-width={strokeWidth} stroke-dasharray={strokeDasharray}/>
       <line x1={cellWidth + vpnOffsetX} y1={0} x2={cellWidth + vpnOffsetX} y2={cellHeight} {stroke} stroke-width={strokeWidth} stroke-dasharray={strokeDasharray}/>
+
+      <foreignObject {...rectDimsData}>
+        <div xmlns="http://www.w3.org/1999/xhtml" style={`width:${cellWidth};${divStyle}`}><b>VPN IP Headers</b></div>
+      </foreignObject>
+      <foreignObject x={cellWidth + vpnOffsetX} y={0} width={cellWidth*3} height={cellHeight}>
+        <div xmlns="http://www.w3.org/1999/xhtml" style={`width:${cellWidth};${divStyle}`}><b><i>Encrypted</i></b></div>
+      </foreignObject>
+    </g>
+
+    <g transform={`translate(${padding.l},${padding.t + (cellHeight + cellMargin)*4})`}>
+      <rect x={0} y={0} width={cellWidth} height={cellHeight} fill={colorData}/>
+      <rect {...rectDimsData} fill={colorIP}/>
+      <rect x={cellWidth + vpnOffsetX} y={0} width={cellWidth*3} height={cellHeight} fill={colorVPN}/>
+      <rect x={0} y={0} width={cellWidth*5} height={cellHeight} fill="transparent" {stroke} stroke-width={strokeWidth}/>
+      <line x1={cellWidth} y1={0} x2={cellWidth} y2={cellHeight} {stroke} stroke-width={strokeWidth}/>
+
+      <foreignObject x={0} y={0} width={cellWidth} height={cellHeight}>
+        <div xmlns="http://www.w3.org/1999/xhtml" style={`width:${cellWidth};${divStyle}`}><b>Frame Header</b></div>
+      </foreignObject>
+      <foreignObject x={cellWidth} y={0} width={cellWidth*3} height={cellHeight}>
+        <div xmlns="http://www.w3.org/1999/xhtml" style={`width:${cellWidth};${divStyle}`}><b>Frame Data</b></div>
+      </foreignObject>
     </g>
   {:else}
     <g transform={`translate(${padding.l},${padding.t + (cellHeight + cellMargin)*3})`}>
