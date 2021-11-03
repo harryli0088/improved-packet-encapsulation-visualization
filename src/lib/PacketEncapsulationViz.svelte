@@ -1,4 +1,6 @@
 <script lang="ts">
+  //this component dynamically renders an SVG packet encapsulation visualization
+
   export let colorApp:string = "#d9ead3"
   export let colorTransport:string = "#ffe599"
   export let colorIP:string = "#c9daf8"
@@ -14,8 +16,15 @@
   export let stroke:string = "gray"
   export let strokeDasharray:string = "5,5"
   export let strokeWidth:number = 2
-  export let vpn:boolean = false
+  export let vpn:boolean = false //whether we should also draw in VPN layers
 
+  /**
+   * create a hald curly brace s shape horizontally from the starting point to the end point using a quarter arc quadratic curve
+   * @param x1
+   * @param y1
+   * @param x2
+   * @param y2
+   */
   function getHalfBracePathD(x1:number,y1:number,x2:number,y2:number) {
     const halfDy = Math.abs((y2 - y1) / 2)
     const midY = (y1 + y2) / 2
@@ -30,50 +39,51 @@
   $: vpnOffsetX = vpn ? cellWidth : 0
 
 
-  $: pathProps = {
+  $: pathProps = { // default props for paths (curly braces)
     fill: "transparent",
     stroke,
     "stroke-width": pathStrokeWidth
   }
 
-  $: strokeProps = {
+  $: strokeProps = { //default stroke props for outline rects and lines
     stroke,
     "stroke-width": strokeWidth,
   }
 
-  $: strokeDashProps = {
+  $: strokeDashProps = { //stroke props for dashed outline rects and lines
     ...strokeProps,
     "stroke-dasharray": strokeDasharray,
   }
 
-  $: rectDimsApp = {
+  $: rectDimsApp = { //default rectangle dimensions for App layer rectangle
     height: cellHeight,
     width: cellWidth,
     x: cellWidth*3 + vpnOffsetX,
     y: 0,
   }
 
-  $: rectDimsTransport = {
+  $: rectDimsTransport = { //default rectangle dimensions for Transport layer rectangle
     height: cellHeight,
     width: cellWidth,
     x: cellWidth*2 + vpnOffsetX,
     y: 0,
   }
 
-  $: rectDimsNetwork = {
+  $: rectDimsNetwork = { //default rectangle dimensions for Network layer rectangle
     height: cellHeight,
     width: cellWidth,
     x: cellWidth + vpnOffsetX,
     y: 0,
   }
 
-  $: rectDimsData = {
+  $: rectDimsData = { //default rectangle dimensions for Data Link layer rectangle
     height: cellHeight,
     width: cellWidth,
     x: vpnOffsetX,
     y: 0,
   }
 
+  // dynamically calculated svg dimensions
   $: svgWidth = padding.l + (vpn?5:4)*cellWidth + padding.r
   $: svgHeight = padding.t + (vpn?5:4)*cellHeight + (vpn?4:3)*cellMargin + padding.b
 </script>
