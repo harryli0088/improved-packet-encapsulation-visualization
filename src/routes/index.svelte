@@ -82,7 +82,7 @@
 
     <p>
       In the image above, the first 3 layers visually breakdown the encapsulation, but the bottom layer is that is actually sent.
-      I was confused and thought that all the layers were being sent along the wire (below).
+      I was confused and thought that all the blocks in all the layers were being sent (below).
     </p>
 
     <div class="img-parent">
