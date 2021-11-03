@@ -7,14 +7,16 @@ const config = {
 	// for more information about preprocessors
 	preprocess: preprocess(),
 
-  adapter: static_adapter({
-    // default options are shown
-    pages: 'build',
-    assets: 'build',
-    fallback: null
-  }),
 	kit: {
-    base: process.env.NODE_ENV==="production" ? '/improved-packet-encapsulation-visualization' : undefined,
+    adapter: static_adapter({
+      // default options are shown
+      pages: 'build',
+      assets: 'build',
+      fallback: null
+    }),
+    paths: {
+      base: process.env.NODE_ENV==="production" ? '/your-repo-name' : undefined,
+    },
     // hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte'
 	}
